@@ -9,7 +9,7 @@ const Jobs = () => {
       <ViewJob actionBar={<></>} />
       <div className="mt-16">
         <div>
-          <h3>Job Picthes</h3>
+          <h3>Job Pitches</h3>
           {Array(5)
             .fill(0)
             .map((_, i) => i)
