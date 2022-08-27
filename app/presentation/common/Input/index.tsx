@@ -1,3 +1,5 @@
+import React from "react";
+
 const Input = (
   props: React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,

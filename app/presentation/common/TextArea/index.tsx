@@ -1,3 +1,5 @@
+import React from "react";
+
 const TextArea = (
   props: React.DetailedHTMLProps<
     React.TextareaHTMLAttributes<HTMLTextAreaElement>,

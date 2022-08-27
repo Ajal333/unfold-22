@@ -1,3 +1,5 @@
+import React from "react";
+
 const P = (
   props: React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,

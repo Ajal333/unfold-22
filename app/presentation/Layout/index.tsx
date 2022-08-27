@@ -1,6 +1,7 @@
-import Navbar from "@presentation/Navbar";
-import Footer from "@presentation/Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { ReactNode } from "react";
+import React from "react";
 
 interface Props {
   children: ReactNode;

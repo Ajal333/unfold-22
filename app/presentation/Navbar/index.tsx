@@ -1,13 +1,12 @@
-import useWeb3Provider from "context/Web3Provider";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import React from "react";
 
 const Navbar = () => {
   const [bg, setBg] = useState<string>("");
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false);
   const [accountText, setAccountText] = useState<string>();
 
-  const { connectWallet, account, disconnectWallet } = useWeb3Provider();
 
   useEffect(() => {
     addEventListener<"scroll">("scroll", handleScroll);
@@ -54,7 +53,7 @@ const Navbar = () => {
               {/* <Link href="/profile" passHref>
                 <li className="cursor-pointer">Profile</li>
               </Link> */}
-              {account ? (
+              {/* {account ? (
                 <button
                   className="cursor-pointer text-white w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
                   onMouseEnter={() => setAccountText("Logout")}
@@ -71,11 +70,11 @@ const Navbar = () => {
               ) : (
                 <button
                   className="cursor-pointer text-white w-[180px] text-center font-bold bg-[#31CF41] py-[10px] px-[20px] rounded-full"
-                  onClick={connectWallet}
+                  // onClick={connectWallet}
                 >
                   Connect Wallet
                 </button>
-              )}
+              )} */}
             </ul>
             <div
               className="flex z-100 lg:hidden flex-col items-center justify-end"

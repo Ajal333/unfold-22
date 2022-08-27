@@ -1,3 +1,5 @@
+import React from "react";
+
 const Label = (
   props: React.DetailedHTMLProps<
     React.LabelHTMLAttributes<HTMLLabelElement>,

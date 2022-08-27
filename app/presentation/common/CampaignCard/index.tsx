@@ -1,6 +1,7 @@
-import { getMaticPriceInUSD } from "@infrastructure/getMaticToUSD";
-import { currency } from "common/constants";
+// import { getMaticPriceInUSD } from "@infrastructure/getMaticToUSD";
+// import { currency } from "common/constants";
 import Link from "next/link";
+import React from "react";
 
 interface Props {
   title: string;
@@ -41,14 +42,14 @@ const CampaignCard = ({
               {organization?.slice(0, 8)}...{organization?.slice(-8)}
             </span>
           </p>
-          <h5 className="mt-[20px] text-[20px] font-semibold">
+          {/* <h5 className="mt-[20px] text-[20px] font-semibold">
             {raisedAmount} {currency}{" "}
             <span className="font-normal text-gray-600">
               {maticPrice !== null &&
                 `($${getMaticPriceInUSD(raisedAmount, maticPrice)})`}
             </span>
-          </h5>
-          <div className="w-full">
+          </h5> */}
+          {/* <div className="w-full">
             <p>
               target of {targetAmount} {currency}{" "}
               <span className="font-normal text-gray-600">
@@ -68,7 +69,7 @@ const CampaignCard = ({
                 }}
               ></div>
             </div>
-          </div>
+          </div> */}
         </div>
       </a>
     </Link>

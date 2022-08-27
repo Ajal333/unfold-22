@@ -1,3 +1,5 @@
+import React from "react";
+
 const H3 = (
   props: React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLHeadingElement>,
