@@ -1,5 +1,5 @@
-import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 import React from "react";
+import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 
 interface Props {
   status: "info" | "warning" | "success" | "error";
