@@ -2,62 +2,84 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract SolHire {
-    struct User {
-        address id;
-        string email;
-        string bio;
-        uint64 experience;
-        uint64 ratingId;
+    struct employer {
+        address employerId;
     }
-
-    struct Employer {
-        address id;
-        string email;
-        uint64 ratingId;
-    }
-
-    struct rating {
-        string comment;
-        uint64 rating;
-    }
-
 
     struct Job {
-        uint64 id;
-        uint64 employerId;
-        uint256 updated_at;
-        uint256 created_at;
-        uint256 favourites;
+        uint64 jobId;
+        address employerId;
+        uint postedAt;
         string title;
-        string jobType;
         string description;
+        string jobType;
         uint64 budget;
+        address assignee;
+        uint64[] pitchIds;
     }
 
     struct Pitch {
-        uint64 id;
-        uint64 jobId;
-        uint64 userId;
-        uint64 estimatedCost;
+        uint pitchId;
+        uint jobId;
+        address userId;
         string email;
         string description;
+        uint price;
     }
 
-    
-    Job[] jobs;
-    uint64 jobsId = 0; 
+    struct User {
+        address userId;
+    }
+
     Pitch[] pitches;
+    Job[] jobs;
+    uint64 jobId = 0;
+    uint64 pitchId = 0;
+    mapping(address => uint64) employerToJob;
+    mapping(address => uint64[]) appliedJobs;
+    mapping(uint64 => address) jobAssignedToUser;
+    mapping(uint => uint) pitchToJob;
 
-
-    function postJob( uint64 id, uint64 employerId, uint256 updated_at, uint256 created_at, uint256 favourites, string memory title, string memory jobType, string memory description, uint64 budget) public returns (uint64 ) {
-        Job storage job = jobs[jobsId++];
+    function postJob(string memory title, string memory description, string memory jobType, uint64 budget) public {
+        Job storage job = jobs[jobId++];
+        job.employerId = msg.sender;
+        job.postedAt = block.timestamp;
+        job.title = title;
+        job.description = description;
+        job.jobType = jobType;
         job.budget = budget;
-        job.created_at = block.timestamp;
 
-
-
+        employerToJob[msg.sender] = jobId-1;
     }
 
+    function pitchJob(
+        uint _jobId,
+        string memory email,
+        string memory description,
+        uint price
+        ) 
+        public {
+        Pitch storage _pitch = pitches[pitchId++];
+        _pitch.jobId = _jobId;
+        _pitch.userId = msg.sender;
+        _pitch.email = email;
+        _pitch.description = description;
+        _pitch.price = price;
+        
+        jobs[_jobId].pitchIds.push(pitchId++);
+        appliedJobs[msg.sender].push(uint64(_jobId));
+    }
+
+    function approveJob(uint64 _jobId, address _assignee) public {
+        require(jobs[_jobId].employerId == msg.sender);
+        jobs[_jobId].assignee = _assignee;
+    }
+
+    function getPitches (uint _jobId) public returns(Pitch memory) {
+        for(int i =0; i< jobs[_jobId].pitchIds.lenght; i++){
+            return pitches[i];
+        }
+    }
 
 
 
