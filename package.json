@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
   "scripts": {
-    "start": "cd frontend && npm run start",
-    "deploy": "cd contract && npm run deploy",
-    "build": "npm run build:contract && npm run build:web",
-    "build:web": "cd frontend && npm run build",
-    "build:contract": "cd contract && npm run build",
-    "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "cd contract && npm test",
-    "test:integration": "npm run build:contract && cd integration-tests && npm test  -- -- \"./contract/build/hello_near.wasm\"",
-    "deps-install": "npm install && cd contract && npm install && cd ../integration-tests && npm install && cd ../frontend && npm install && cd .."
+    "start": "cd frontend && yarn start",
+    "deploy": "cd contract && yarn deploy",
+    "build": "yarn build:contract && yarn build:web",
+    "build:web": "cd frontend && yarn build",
+    "build:contract": "cd contract && yarn build",
+    "test": "yarn test:unit && yarn test:integration",
+    "test:unit": "cd contract && yarn test",
+    "test:integration": "yarn build:contract && cd integration-tests && yarn test  -- -- \"./contract/build/hello_near.wasm\"",
+    "deps-install": "yarn && cd contract && yarn && cd ../integration-tests && yarn && cd ../frontend && yarn && cd .."
   },
   "devDependencies": {
     "near-cli": "^3.3.0"
