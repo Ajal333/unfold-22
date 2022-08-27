@@ -1,8 +1,16 @@
-import "antd/dist/antd.css";
 import "../styles/globals.scss";
+import type { AppProps } from "next/app";
+import { NextUIProvider } from "@nextui-org/react";
+import Layout from "../presentation/components/common/Layout";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <NextUIProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </NextUIProvider>
+  );
 }
 
 export default MyApp;
