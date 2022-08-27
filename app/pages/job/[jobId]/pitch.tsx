@@ -1,3 +1,5 @@
+import PitchCard from "../../../presentation/components/PitchCard";
+
 const Pitch = () => {
   return (
     <div>

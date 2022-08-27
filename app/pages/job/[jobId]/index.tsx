@@ -1,7 +1,7 @@
 import { Button, Divider } from "@nextui-org/react";
 import React, { useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import ApplyJobModal from "../../presentation/components/ApplyJobModal";
+import ApplyJobModal from "../../../presentation/components/ApplyJobModal";
 
 const Job = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
