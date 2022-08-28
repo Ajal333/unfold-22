@@ -38,39 +38,34 @@ const NavbarComponent = () => {
         <Navbar.Brand>
           <img src={"/logo.svg"} alt="logo" className="w-24" />
         </Navbar.Brand>
-        <Navbar.Content hideIn="xs">
-          {isFreelancer ? (
+        {account && (
+          <Navbar.Content hideIn="xs">
+            {isFreelancer ? (
+              <Navbar.Link
+                isActive={router.pathname === routes.F_JOBS}
+                href={routes.F_JOBS}
+              >
+                Find Works
+              </Navbar.Link>
+            ) : (
+              <Navbar.Link
+                isActive={router.pathname === routes.E_JOBS}
+                href={routes.E_JOBS}
+              >
+                My Jobs
+              </Navbar.Link>
+            )}
             <Navbar.Link
-              isActive={router.pathname === routes.F_JOBS}
-              href={routes.F_JOBS}
+              isActive={router.pathname === routes.E_REPORTS}
+              href={routes.E_REPORTS}
             >
-              Find Works
+              Reports
             </Navbar.Link>
-          ) : (
-            <Navbar.Link
-              isActive={router.pathname === routes.E_JOBS}
-              href={routes.E_JOBS}
-            >
-              My Jobs
+            <Navbar.Link isActive={router.pathname === "/#d"} href="#d">
+              Messages
             </Navbar.Link>
-          )}
-          <Navbar.Link
-            isActive={router.pathname === routes.E_REPORTS}
-            href={routes.E_REPORTS}
-          >
-            Reports
-          </Navbar.Link>
-          <Navbar.Link isActive={router.pathname === "/#d"} href="#d">
-            Messages
-          </Navbar.Link>
-          {account && (
-            <>
-              <Navbar.Link href="#x">My Jobs</Navbar.Link>
-              <Navbar.Link href="#a">Reports</Navbar.Link>
-              <Navbar.Link href="#d">Messages</Navbar.Link>
-            </>
-          )}
-        </Navbar.Content>
+          </Navbar.Content>
+        )}
         <Navbar.Content>
           <Navbar.Item>
             <Button
