@@ -43,9 +43,6 @@ const ReportModal = ({ setModalVisible, modalVisible }: Props) => {
         <Button auto flat color="error" onClick={() => setModalVisible("")}>
           Close
         </Button>
-        <Button auto onClick={() => setModalVisible("")}>
-          Apply
-        </Button>
       </Modal.Footer>
     </Modal>
   );

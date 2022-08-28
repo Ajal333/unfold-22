@@ -4,7 +4,6 @@ import { Button, Navbar, Text } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import routes from "../../../routes";
 import useWeb3Provider from "../../../../context/Web3Provider";
-import { LogoSvg } from "../../../../assets";
 
 const NavbarComponent = () => {
   const [bg, setBg] = useState<string>("");
@@ -36,11 +35,9 @@ const NavbarComponent = () => {
     <>
       <Navbar variant={"floating"} isBordered={true}>
         <Navbar.Brand>
-          <img src={LogoSvg} alt="logo" />
-          <Text b color="inherit">
-            SolHire
-          </Text>
+          <img className="w-20" src={"/logo.svg"} alt="logo" />
         </Navbar.Brand>
+        {account &&
         <Navbar.Content hideIn="xs">
           {isFreelancer ? (
             <Navbar.Link
@@ -63,17 +60,9 @@ const NavbarComponent = () => {
           >
             Reports
           </Navbar.Link>
-          <Navbar.Link isActive={router.pathname === "/#d"} href="#d">
-            Messages
-          </Navbar.Link>
-          {account && (
-            <>
-              <Navbar.Link href="#x">My Jobs</Navbar.Link>
-              <Navbar.Link href="#a">Reports</Navbar.Link>
-              <Navbar.Link href="#d">Messages</Navbar.Link>
-            </>
-          )}
+          
         </Navbar.Content>
+        }
         <Navbar.Content>
           <Navbar.Item>
             <Button

@@ -5,7 +5,7 @@ const History = () => {
   return (
     <div>
       <div>
-        {Array(5)
+        {Array(2)
           .fill(0)
           .map((_, i) => i)
           .map((i) => (

@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     <div className="text-black">
       <Row justify="space-between">
         <Input contentLeft={<BiSearch />} placeholder="Search..." />
-        {isFreelancer && (
+        {!isFreelancer && (
           <Button color={"secondary"} onClick={() => setModalVisible(true)}>
             Add New Job
           </Button>
