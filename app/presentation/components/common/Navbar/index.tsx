@@ -4,6 +4,7 @@ import { Button, Navbar, Text } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import routes from "../../../routes";
 import useWeb3Provider from "../../../../context/Web3Provider";
+import { LogoSvg } from "../../../../assets";
 
 const NavbarComponent = () => {
   const [bg, setBg] = useState<string>("");
@@ -32,6 +33,7 @@ const NavbarComponent = () => {
     <>
       <Navbar variant={"floating"} isBordered={true}>
         <Navbar.Brand>
+          <img src={LogoSvg} alt="logo" />
           <Text b color="inherit">
             SolHire
           </Text>
