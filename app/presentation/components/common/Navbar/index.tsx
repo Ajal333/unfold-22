@@ -36,10 +36,7 @@ const NavbarComponent = () => {
     <>
       <Navbar variant={"floating"} isBordered={true}>
         <Navbar.Brand>
-          <img src={LogoSvg} alt="logo" />
-          <Text b color="inherit">
-            SolHire
-          </Text>
+          <img src={"/logo.svg"} alt="logo" className="w-24" />
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           {isFreelancer ? (
