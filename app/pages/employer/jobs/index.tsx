@@ -1,9 +1,9 @@
-import { Input, Navbar } from "@nextui-org/react";
-import type { NextPage } from "next";
-import JobCard from "../presentation/components/common/JobCard";
+import { Input } from "@nextui-org/react";
+import React from "react";
 import { BiSearch } from "react-icons/bi";
+import JobCard from "../../../presentation/components/common/JobCard";
 
-const Home: NextPage = () => {
+const EmployerJobs = () => {
   return (
     <div className="text-black w-full">
       <Input contentLeft={<BiSearch />} placeholder="Search..." />
@@ -11,10 +11,10 @@ const Home: NextPage = () => {
         .fill(0)
         .map((_, i) => i)
         .map((i) => (
-          <JobCard key={i} />
+          <JobCard key={i} pitchCount={i} />
         ))}
     </div>
   );
 };
 
-export default Home;
+export default EmployerJobs;
