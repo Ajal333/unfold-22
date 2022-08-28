@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { Button, Navbar, Text } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import useWeb3Provider from "../../../../context/Web3Provider";
 
 const NavbarComponent = () => {
   const [bg, setBg] = useState<string>("");
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false);
   const [accountText, setAccountText] = useState<string>();
+
+  const { account, connectWallet, disconnectWallet } = useWeb3Provider();
 
   useEffect(() => {
     addEventListener<"scroll">("scroll", handleScroll);
@@ -35,14 +38,22 @@ const NavbarComponent = () => {
           <Navbar.Link isActive href="#b">
             Find Works
           </Navbar.Link>
-          <Navbar.Link href="#x">My Jobs</Navbar.Link>
-          <Navbar.Link href="#a">Reports</Navbar.Link>
-          <Navbar.Link href="#d">Messages</Navbar.Link>
+          {account && (
+            <>
+              <Navbar.Link href="#x">My Jobs</Navbar.Link>
+              <Navbar.Link href="#a">Reports</Navbar.Link>
+              <Navbar.Link href="#d">Messages</Navbar.Link>
+            </>
+          )}
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
-            <Button color="primary" auto>
-              Connect Wallet
+            <Button
+              color={account ? "secondary" : "primary"}
+              onClick={account ? disconnectWallet : connectWallet}
+              auto
+            >
+              {account ? "Disconnect" : "Connect"} Wallet
             </Button>
           </Navbar.Item>
         </Navbar.Content>
