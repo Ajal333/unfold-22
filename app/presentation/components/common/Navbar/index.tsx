@@ -9,6 +9,9 @@ const NavbarComponent = () => {
   const [bg, setBg] = useState<string>("");
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false);
   const [accountText, setAccountText] = useState<string>();
+  const router = useRouter();
+
+  const { account, connectWallet, disconnectWallet } = useWeb3Provider();
 
   useEffect(() => {
     addEventListener<"scroll">("scroll", handleScroll);
@@ -37,12 +40,37 @@ const NavbarComponent = () => {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          <Navbar.Link isActive href="#b">
-            Find Works
+          {isFreelancer ? (
+            <Navbar.Link
+              isActive={router.pathname === routes.F_JOBS}
+              href={routes.F_JOBS}
+            >
+              Find Works
+            </Navbar.Link>
+          ) : (
+            <Navbar.Link
+              isActive={router.pathname === routes.E_JOBS}
+              href={routes.E_JOBS}
+            >
+              My Jobs
+            </Navbar.Link>
+          )}
+          <Navbar.Link
+            isActive={router.pathname === routes.E_REPORTS}
+            href={routes.E_REPORTS}
+          >
+            Reports
           </Navbar.Link>
-          <Navbar.Link href="#x">My Jobs</Navbar.Link>
-          <Navbar.Link href="#a">Reports</Navbar.Link>
-          <Navbar.Link href="#d">Messages</Navbar.Link>
+          <Navbar.Link isActive={router.pathname === "/#d"} href="#d">
+            Messages
+          </Navbar.Link>
+          {account && (
+            <>
+              <Navbar.Link href="#x">My Jobs</Navbar.Link>
+              <Navbar.Link href="#a">Reports</Navbar.Link>
+              <Navbar.Link href="#d">Messages</Navbar.Link>
+            </>
+          )}
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
