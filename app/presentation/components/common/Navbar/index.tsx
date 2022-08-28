@@ -1,18 +1,14 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Button, Navbar, Text } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import routes from "../../../routes";
-import useWeb3Provider from "../../../../context/Web3Provider";
+import { useRouter } from "next/router";
 
 const NavbarComponent = () => {
   const router = useRouter();
   const [bg, setBg] = useState<string>("");
   const [navbarExpanded, setNavbarExpanded] = useState<boolean>(false);
   const [accountText, setAccountText] = useState<string>();
-  const router = useRouter();
-
-  const { account, connectWallet, disconnectWallet } = useWeb3Provider();
+  const [activeLink, setActiveLink] = useState<string>(router?.pathname);
 
   useEffect(() => {
     addEventListener<"scroll">("scroll", handleScroll);
@@ -29,8 +25,6 @@ const NavbarComponent = () => {
     else setBg("");
   };
 
-  const isFreelancer = true;
-
   return (
     <div className="max-w-[1440px] w-full mx-auto">
       <Navbar variant={"floating"} isBordered={true}>
@@ -40,46 +34,23 @@ const NavbarComponent = () => {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          {isFreelancer ? (
-            <Navbar.Link
-              isActive={router.pathname === routes.F_JOBS}
-              href={routes.F_JOBS}
-            >
-              Find Works
-            </Navbar.Link>
-          ) : (
-            <Navbar.Link
-              isActive={router.pathname === routes.E_JOBS}
-              href={routes.E_JOBS}
-            >
-              My Jobs
-            </Navbar.Link>
-          )}
-          <Navbar.Link
-            isActive={router.pathname === routes.E_REPORTS}
-            href={routes.E_REPORTS}
-          >
+          <Navbar.Link isActive={router?.pathname === "/"} href="/">
+            Find Works
+          </Navbar.Link>
+          <Navbar.Link isActive={router?.pathname === "/myJobs"} href="/myJobs">
+            My Jobs
+          </Navbar.Link>
+          <Navbar.Link isActive={router?.pathname === "/reports"} href="#a">
             Reports
           </Navbar.Link>
-          <Navbar.Link isActive={router.pathname === "/#d"} href="#d">
+          <Navbar.Link isActive={router?.pathname === "/messages"} href="#d">
             Messages
           </Navbar.Link>
-          {account && (
-            <>
-              <Navbar.Link href="#x">My Jobs</Navbar.Link>
-              <Navbar.Link href="#a">Reports</Navbar.Link>
-              <Navbar.Link href="#d">Messages</Navbar.Link>
-            </>
-          )}
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
-            <Button
-              color={account ? "secondary" : "primary"}
-              onClick={account ? disconnectWallet : connectWallet}
-              auto
-            >
-              {account ? "Disconnect" : "Connect"} Wallet
+            <Button color="primary" auto>
+              Connect Wallet
             </Button>
           </Navbar.Item>
         </Navbar.Content>
